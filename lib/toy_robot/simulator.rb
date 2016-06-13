@@ -3,7 +3,7 @@ module ToyRobot
   class Simulator
     attr_reader :robot
 
-    def initialize(_robot = nil)
+    def initialize
       @robot = Robot.new
     end
 
