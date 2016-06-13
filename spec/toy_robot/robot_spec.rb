@@ -93,5 +93,89 @@ module ToyRobot
         expect(robot.orientation).to eq(:west)
       end
     end
+
+    context '#place with extact position' do
+      it 'stand at 0,0 by default' do
+        expect(robot.report_position).to eq('0,0')
+      end
+
+      it '#place at 0,0' do
+        robot.place(0, 0)
+
+        expect(robot.report_position).to eq('0,0')
+      end
+
+      it '#place at 4,0' do
+        robot.place(4, 0)
+
+        expect(robot.report_position).to eq('4,0')
+      end
+
+      it '#place at 0,4' do
+        robot.place(0, 4)
+
+        expect(robot.report_position).to eq('0,4')
+      end
+
+      it '#place at -1,0' do
+        robot.place(-1, 0)
+
+        expect(robot.report_position).to eq('0,0')
+      end
+
+      it '#place at 0,-1' do
+        robot.place(0, -1)
+
+        expect(robot.report_position).to eq('0,0')
+      end
+
+      it '#place at -1,-1' do
+        robot.place(0, -1)
+
+        expect(robot.report_position).to eq('0,0')
+      end
+
+      it '#place at -5,1' do
+        robot.place(-5, 1)
+
+        expect(robot.report_position).to eq('0,0')
+      end
+
+      it '#place at 1,-5' do
+        robot.place(1, -5)
+
+        expect(robot.report_position).to eq('0,0')
+      end
+    end
+
+    context '#move' do
+      it 'moves to north' do
+        robot.face(:north)
+        robot.move
+
+        expect(robot.report_position).to eq('0,1')
+      end
+
+      it 'moves to east' do
+        robot.face(:east)
+        robot.move
+
+        expect(robot.report_position).to eq('1,0')
+      end
+
+      it 'doesn\'t moves to south since it\'s off the table' do
+        robot.face(:south)
+        robot.move
+
+        expect(robot.report_position).to eq('0,0')
+      end
+
+      it 'doesn\'t moves to west since it\'s off the table' do
+        robot.face(:west)
+        robot.move
+
+        expect(robot.report_position).to eq('0,0')
+      end
+    end
   end
 end
