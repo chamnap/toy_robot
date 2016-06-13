@@ -3,6 +3,7 @@ require 'spec_helper'
 module ToyRobot
   describe Robot do
     let(:robot) { described_class.new }
+    before      { robot.place(0, 0) }
 
     context '#left' do
       it 'facing north' do

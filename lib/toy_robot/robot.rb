@@ -2,10 +2,6 @@ module ToyRobot
   class Robot
     attr_accessor :orientation, :position
 
-    def initialize
-      place(0, 0)
-    end
-
     #   N
     # W   E
     #   S
@@ -47,7 +43,7 @@ module ToyRobot
     end
 
     def place(x, y)
-      self.position = { x: x, y: y } if valid_position?(x, y)
+      self.position = { x: x, y: y } if off_table?(x, y)
     end
 
     def report_position
@@ -57,7 +53,15 @@ module ToyRobot
     def move
       new_x = position[:x] + step[:x]
       new_y = position[:y] + step[:y]
-      place(new_x, new_y) if valid_position?(new_x, new_y)
+      place(new_x, new_y) if off_table?(new_x, new_y)
+    end
+
+    def on_table?
+      !!position
+    end
+
+    def off_table?(x, y)
+      x >= 0 && x <=4 && y >=0 && y <= 4
     end
 
     def step
@@ -72,10 +76,6 @@ module ToyRobot
 
     def steps
       self.class.steps
-    end
-
-    def valid_position?(x, y)
-      x >= 0 && x <=4 && y >=0 && y <= 4
     end
   end
 end
