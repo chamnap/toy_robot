@@ -1,57 +1,47 @@
-# Toy Robot Simulator
+# ToyRobot
 
-## Description
-- The application is a simulation of a toy robot moving on a square tabletop, of dimensions 5 units x 5 units.
-- There are no other obstructions on the table surface.
-- The robot is free to roam around the surface of the table, but must be prevented from falling to destruction. Any movement
-that would result in the robot falling from the table must be prevented, however further valid movement commands must still
-be allowed.
+ToyRobot is a simulator of a robot that moves on a square tabletop, of dimensions 5 units x 5 units. Please checkout the [specification](https://github.com/chamnap/toy_robot/blob/master/SPEC.md) for more details.
 
-Create an application that can read in commands of the following form
+## Installation
 
-    PLACE X,Y,F
-    MOVE
-    LEFT
-    RIGHT
-    REPORT
+You should have ruby 2.3.0 installed on your machine. Then, run the following inside your console:
 
-- PLACE will put the toy robot on the table in position X,Y and facing NORTH, SOUTH, EAST or WEST.
-- The origin (0,0) can be considered to be the SOUTH WEST most corner.
-- The first valid command to the robot is a PLACE command, after that, any sequence of commands may be issued, in any order, including another PLACE command. The application should discard all commands in the sequence until a valid PLACE command has been executed.
-- MOVE will move the toy robot one unit forward in the direction it is currently facing.
-- LEFT and RIGHT will rotate the robot 90 degrees in the specified direction without changing the position of the robot.
-- REPORT will announce the X,Y and F of the robot. This can be in any form, but standard output is sufficient.
-- A robot that is not on the table can choose the ignore the MOVE, LEFT, RIGHT and REPORT commands.
-- Input can be from a file, or from standard input, as the developer chooses.
-- Provide test data to exercise the application.
+    $ git clone git://github.com/chamnap/toy_robot.git
+    $ cd toy_robot
+    $ gem install bundler
+    $ bundle install
 
-## Constraints
+## Usage
 
-The toy robot must not fall off the table during movement. This also includes the initial placement of the toy robot.
-Any move that would cause the robot to fall must be ignored.
+ToyRobot reads instructions from STDIN, executing them one command at a time until you press ENTER key.
 
-## Example Input and Output
-
-a)
-
-    PLACE 0,0,NORTH
-    MOVE
-    REPORT
-    Output: 0,1,NORTH
-
-b)
-
-    PLACE 0,0,NORTH
-    LEFT
-    REPORT
-    Output: 0,0,WEST
-
-c)
-
+    $ cd toy_robot
+    $ bin/toy_robot
     PLACE 1,2,EAST
     MOVE
     MOVE
     LEFT
     MOVE
     REPORT
-    Output: 3,3,NORTH
+    => 3,3,NORTH
+
+## Tests
+
+    $ rspec
+    Run options: include {:focus=>true}
+
+    All examples were filtered out; ignoring {:focus=>true}
+    ...................................
+
+    Finished in 0.01238 seconds (files took 0.39698 seconds to load)
+    35 examples, 0 failures
+
+    Coverage report generated for RSpec to /Users/chamnapchhorn/workspace/me/toy_robot/coverage. 123 / 124 LOC (99.19%) covered.
+
+## Authors
+
+* [Chamnap Chhorn](https://github.com/chamnap)
+
+## License
+
+The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).

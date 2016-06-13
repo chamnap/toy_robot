@@ -1,0 +1,18 @@
+#!/usr/bin/env ruby
+
+require 'bundler/setup'
+require 'toy_robot'
+
+simulator = ToyRobot::Simulator.new
+
+command = STDIN.gets
+while command
+  output = begin
+    simulator.execute(command)
+  rescue ToyRobot::CommandError => exception
+    exception.message
+  end
+  puts "=> #{output}" if output
+
+  command = STDIN.gets
+end

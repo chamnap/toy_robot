@@ -50,5 +50,31 @@ module ToyRobot
         expect(simulator.report).to eq('1,1,WEST')
       end
     end
+
+    context 'integration' do
+      it 'example1' do
+        simulator.execute('PLACE 0,0,NORTH')
+        simulator.execute('MOVE')
+
+        expect(simulator.execute('REPORT')).to eq('0,1,NORTH')
+      end
+
+      it 'example2' do
+        simulator.execute('PLACE 0,0,NORTH')
+        simulator.execute('LEFT')
+
+        expect(simulator.execute('REPORT')).to eq('0,0,WEST')
+      end
+
+      it 'example3' do
+        simulator.execute('PLACE 1,2,EAST')
+        simulator.execute('MOVE')
+        simulator.execute('MOVE')
+        simulator.execute('LEFT')
+        simulator.execute('MOVE')
+
+        expect(simulator.execute('REPORT')).to eq('3,3,NORTH')
+      end
+    end
   end
 end
