@@ -36,7 +36,7 @@ ToyRobot reads instructions from STDIN, executing them one command at a time unt
     Finished in 0.01238 seconds (files took 0.39698 seconds to load)
     35 examples, 0 failures
 
-    Coverage report generated for RSpec to /Users/chamnapchhorn/workspace/me/toy_robot/coverage. 123 / 124 LOC (99.19%) covered.
+    Coverage report generated for RSpec to /Users/chamnapchhorn/workspace/me/toy_robot/coverage. 126 / 127 LOC (99.21%) covered.
 
 ## Authors
 

@@ -1,8 +1,9 @@
 module ToyRobot
+  # Simulator
   class Simulator
     attr_reader :robot
 
-    def initialize(robot=nil)
+    def initialize(_robot = nil)
       @robot = Robot.new
     end
 
@@ -13,7 +14,7 @@ module ToyRobot
 
       if command == 'PLACE'
         array = arguments.split(',')
-        raise CommandError, "Invalid arguments for PLACE." if array.length != 3
+        raise CommandError, 'Invalid arguments for PLACE.' if array.length != 3
 
         place(array[0].to_i, array[1].to_i, array[2].to_s.downcase.to_sym)
       elsif command == 'MOVE'
@@ -29,7 +30,6 @@ module ToyRobot
       end
     end
 
-    # array
     def place(x, y, orientation)
       raise CommandError, 'Invalid orientation (NORTH,SOUTH,EAST,WEST).' unless %w(north south east west).include?(orientation.to_s)
       raise CommandError, 'Invalid position, it makes the robots fall off the table.' unless robot.valid_position?(x, y)
@@ -41,7 +41,8 @@ module ToyRobot
 
     def move
       raise CommandError, 'Robot is not placed on the table yet.' unless robot.on_table?
-      robot.move
+      raise CommandError, 'Invalid position, it makes the robots fall off the table.' unless robot.move
+
       nil
     end
 

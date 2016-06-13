@@ -101,50 +101,42 @@ module ToyRobot
       end
 
       it '#place at 0,0' do
-        robot.place(0, 0)
-
+        expect(robot.place(0, 0)).to eq(true)
         expect(robot.report_position).to eq('0,0')
       end
 
       it '#place at 4,0' do
-        robot.place(4, 0)
-
+        expect(robot.place(4, 0)).to eq(true)
         expect(robot.report_position).to eq('4,0')
       end
 
       it '#place at 0,4' do
-        robot.place(0, 4)
-
+        expect(robot.place(0, 4)).to eq(true)
         expect(robot.report_position).to eq('0,4')
       end
 
       it '#place at -1,0' do
-        robot.place(-1, 0)
-
+        expect(robot.place(-1, 0)).to eq(false)
         expect(robot.report_position).to eq('0,0')
       end
 
       it '#place at 0,-1' do
-        robot.place(0, -1)
-
+        expect(robot.place(0, -1)).to eq(false)
         expect(robot.report_position).to eq('0,0')
       end
 
       it '#place at -1,-1' do
-        robot.place(0, -1)
-
+        expect(robot.place(0, -1)).to eq(false)
         expect(robot.report_position).to eq('0,0')
       end
 
       it '#place at -5,1' do
-        robot.place(-5, 1)
-
+        expect(robot.place(-5, 1)).to eq(false)
         expect(robot.report_position).to eq('0,0')
       end
 
       it '#place at 1,-5' do
-        robot.place(1, -5)
-
+        expect(robot.place(1, -5)).to eq(false)
         expect(robot.report_position).to eq('0,0')
       end
     end
