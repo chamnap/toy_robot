@@ -1,0 +1,6 @@
+AllCops:
+  Exclude:
+    - '*.gemspec'
+
+  DisplayCopNames: true
+  DisplayStyleGuide: true

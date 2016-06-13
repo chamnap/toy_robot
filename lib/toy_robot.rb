@@ -1,5 +1,6 @@
-require "toy_robot/version"
+require 'toy_robot/version'
 
+# ToyRobot
 module ToyRobot
-  # Your code goes here...
+  autoload :Robot, 'toy_robot/robot'
 end
